@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "./utils/pokemon";
 import "./App.css";
-import Card from "./components/Card/Card";
 import Navbar from "./components/Navbar/Navbar";
 import Btn from "./components/Btn/Btn";
+import CardContainer from "./components/CardContainer/CardContainer";
 
 export default function App() {
   const initialUrl = "https://pokeapi.co/api/v2/pokemon";
@@ -61,11 +61,7 @@ export default function App() {
           <h1>Loading...</h1>
         ) : (
           <>
-            <div className="pokemonCardContainer">
-              {pokemonData.map((pokemon, index) => {
-                return <Card key={index} pokemon={pokemon} />;
-              })}
-            </div>
+            <CardContainer pokemonData={pokemonData} />
             <Btn
               handleNextPage={handleNextPage}
               handlePrevPage={handlePrevPage}
